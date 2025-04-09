@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 
-const user_adminSchema=new mongoose.Schema({
-    user_id : {
+const user_adminSchema=new mongoose.Schema({  //userAdminSchema
+        user_id : {
         type: String,
         required: [true,"PLEASE ENTER user_id"],
     },

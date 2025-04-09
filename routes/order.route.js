@@ -1,16 +1,19 @@
-const express= require('express');
-const router=express.Router();
+const express = require('express');
+const router = express.Router();
 
-const {getorders,singleorder,createsingleorder,updatesingleorder,deletesingleorder}=require('../controllers/order.controler');
+const {
+    getorders,
+    singleorder,
+    createsingleorder,
+    updatesingleorder,
+    deletesingleorder,
+    verifyToken // Import the middleware
+} = require('../controllers/order.controler');
 
-
-
-
-router.get('/order',getorders);
-router.get('/order/:order_id',singleorder);
-router.post('/order',createsingleorder);
-router.put('/order/:order_id',updatesingleorder);
-router.delete('/order/:order_id',deletesingleorder);
-
-
-module.exports=router;
+// Apply verifyToken middleware to protect the routes
+router.get('/', verifyToken, getorders);
+router.get('/:order_id', verifyToken, singleorder);
+router.post('/', verifyToken, createsingleorder);
+router.put('/:order_id', verifyToken, updatesingleorder);
+router.delete('/:order_id', verifyToken, deletesingleorder);
+module.exports = router;

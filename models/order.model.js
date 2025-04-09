@@ -4,12 +4,10 @@ const orderSchema=new mongoose.Schema({
 
     order_id:{
         type:String,
-        required:[true,"PLEASE ENTER order_id"],
     },
 
     user_id:{
         type:String,
-        required:[true,"PLEASE ENTER user_id"],
     },
 
     item_info:{
